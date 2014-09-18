@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EE</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <canvas id="canvas" width="0" height="0">
+    Your browser doesn't support canvas :(
+  </canvas> 
+  <img id="hamtaro" class="sprite" alt="" src="sprites/hamtaro.png"/>
+
+  <script type="text/javascript" src="js/game.js"></script>
+  <script type="text/javascript" src="js/sprites.js"></script>
+  <script type="text/javascript" src="js/player.js"></script>
+  <script type="text/javascript" src="js/gameObject.js"></script>
+  <script type="text/javascript" src="js/input.js"></script>
+  <script type="text/javascript" src="js/globals.js"></script>
+  <script type="text/javascript" src="js/animationTimer.js"></script>
+  <script type="text/javascript" src="js/animation.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      var canvas = document.getElementById("canvas");
+      globals = initGlobals(canvas);
+      sprites = initSprites({
+        hamtaro: document.getElementById("hamtaro")
+      });
+      GameObject = initGameObject();
+      AnimationTimer = initAnimationTimer();
+      Animation = initAnimation();
+      Player = initPlayer();
+      var player = new Player();
+      initInput(player, window);
+      var Game = initGame([player], canvas);
+      Game.start();
+    }
+  </script>
+</body>
+</html>
